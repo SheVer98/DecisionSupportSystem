@@ -1,0 +1,66 @@
+<app-header></app-header>
+<button (click)="goBack()">Powrót</button>
+
+  <div class="samochod">
+    <img [src]="link" />
+    <div class="content">
+<div class="up">
+      <ul>
+<li>
+<div class="model">
+<p>Model</p>
+  {{model}}
+</div>
+</li>
+<li>
+<div class="cena">
+  <p>Cena (zl)</p>
+{{cena}}
+</div>
+</li>
+<li>
+<div class="moc">
+  <p>Moc (KM)</p>
+{{moc}}
+</div>
+</li>
+<li>
+<div class="pojemnosc">
+  <p>Pojemnosc (cm3)</p>
+{{pojemnosc}}
+</div>
+</li>
+</ul>
+</div>
+<div class="down">
+<ul>
+<li>
+<div class="przebieg">
+  <p>Przebieg (tys. km)</p>
+{{przebieg}}
+</div>
+</li>
+<li>
+<div class="rok">
+  <p>Rok</p>
+{{rok}}
+</div>
+</li>
+<li>
+<div class="paliwo">
+  <p>Paliwo</p>
+{{paliwo}}
+</div>
+</li>
+<li>
+<div class="skrzynia">
+  <p>Skrzynia</p>
+{{skrzynia}}
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+

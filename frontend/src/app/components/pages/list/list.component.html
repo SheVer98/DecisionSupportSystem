@@ -1,0 +1,92 @@
+<ng-container *ngIf="isLoggedIn; else adminHeader">
+  <app-adminheader></app-adminheader>
+</ng-container>
+
+<ng-template #adminHeader>
+  <app-header></app-header>
+</ng-template>
+
+<div class="container">
+<app-search></app-search>
+<select [(ngModel)]="fuelType" (ngModelChange)="updateCarsList()">
+  <option value="">Wszystkie</option>
+  <option value="Benzyna">Benzyna</option>
+  <option value="Diesel">Diesel</option>
+</select>
+
+
+<select [(ngModel)]="gearboxType" (change)="updateCarsList()">
+  <option value="">Wszystkie</option>
+  <option value="Manualna">Manualna</option>
+  <option value="Automatyczna">Automatyczna</option>
+</select>
+</div>
+
+<ul>
+  <li *ngFor="let car of cars">
+    <div class="samochod">
+    <a routerLink="/car/{{car.id}}">
+      <img [src]="car.link" [alt]="car.model"/>
+    </a>
+      <div class="content">
+<div class="up">
+        <ul>
+<li>
+  <div class="model">
+ <p>Model</p>
+    {{car.model}}
+</div>
+</li>
+<li>
+  <div class="cena">
+    <p>Cena (zl)</p>
+  {{car.cena}}
+</div>
+</li>
+<li>
+  <div class="moc">
+    <p>Moc (KM)</p>
+  {{car.moc}}
+</div>
+</li>
+<li>
+  <div class="pojemnosc">
+    <p>Pojemnosc (cm3)</p>
+  {{car.pojemnosc}}
+</div>
+</li>
+</ul>
+</div>
+<div class="down">
+<ul>
+<li>
+  <div class="przebieg">
+    <p>Przebieg (tys. km)</p>
+  {{car.przebieg}}
+</div>
+</li>
+<li>
+  <div class="rok">
+    <p>Rok</p>
+  {{car.rok}}
+</div>
+</li>
+<li>
+  <div class="paliwo">
+    <p>Paliwo</p>
+  {{car.paliwo}}
+</div>
+</li>
+<li>
+  <div class="skrzynia">
+    <p>Skrzynia</p>
+  {{car.skrzynia}}
+</div>
+</li>
+</ul>
+</div>
+</div>
+      </div>
+
+  </li>
+</ul>

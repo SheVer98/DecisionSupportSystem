@@ -1,0 +1,49 @@
+button {
+  background-color: #31498b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0080ff;
+  }
+
+.up li {
+  display: inline-block;
+}
+
+.down li {
+  display: inline-block;
+}
+
+
+.content {
+  margin-bottom: 40px; /* Dodaje margines dolny 20 pikseli */
+
+}
+
+.centroid-item {
+  background-color: #ccc; /* Dodaje tło tylko dla elementu z klasą "centroid-item" */
+}
+
+li {
+  margin-bottom: 20px;
+  list-style: none;
+  text-align: center; /* Wyrownuje tekst do środka */
+  border: 1px solid #ccc; /* Dodaje obramowanie */
+  padding: 10px; /* Dodaje wewnętrzny padding */
+  background-color: #f9f9f9; /* Dodaje tło dla innych elementów */
+  color: #333; /* Zmienia kolor tekstu */
+}
+
+
+h1{
+  text-align: center;
+}

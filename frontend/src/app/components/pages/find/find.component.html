@@ -1,0 +1,229 @@
+<app-header></app-header>
+<div class="form">
+  <h1>Wybór samochodu</h1>
+  <form (ngSubmit)="wybierz()" #myForm="ngForm">
+    <label for="cena">Cena (zl):</label>
+    <input type="number" id="cena" name="cena" min="3" max="100000" ngModel required cena><br>
+
+    <label for="moc">Moc (KM):</label>
+    <input type="number" id="moc" name="moc" min="3" max="300" ngModel required moc><br>
+
+    <label for="pojemnosc">Pojemnosc (cm3):</label>
+    <input type="number" id="pojemnosc" name="pojemnosc" min="3" max="4000" ngModel required pojemnosc><br>
+
+    <label for="przebieg">Przebieg (tys. km):</label>
+    <input type="number" id="przebieg" name="przebieg" min="3" max="400" ngModel required przebieg><br>
+
+    <label for="fuelType">Rodzaj paliwa:</label>
+    <select name="fuelType" [(ngModel)]="fuelType" (change)="wybierz()">
+      <option value="">-- Wybierz --</option>
+      <option value="Benzyna">Benzyna</option>
+      <option value="Diesel">Diesel</option>
+    </select>
+
+    <label for="gearboxType">Rodzaj skrzyni biegów:</label>
+    <select name="gearboxType" [(ngModel)]="gearboxType" (change)="wybierz()">
+      <option value="">-- Wybierz --</option>
+      <option value="Manualna">Manualna</option>
+      <option value="Automatyczna">Automatyczna</option>
+    </select>
+
+    <button (click)="showDetails = true" type="submit"  id="btn">Szukaj</button>
+    <!-- <input type="submit" value="Submit" id="btn"> -->
+  </form>
+</div>
+
+<ul *ngIf="showDetails">
+<li>Ocena: <b>{{centroid | number: '1.0-3'}}</b></li>
+</ul>
+
+
+
+  <div *ngIf="showDetails">
+
+  <!-- <h3>Odleglosc</h3>
+
+  <ul>
+  <li *ngFor="let samochod of wybraneSuma.slice(0, 4); let i = index">
+    <p>{{i + 1}}.</p>
+    <div class="samochod">
+      <a routerLink="/car/{{samochod.id}}">
+      <img [src]="samochod.link" [alt]="samochod.model"/>
+    </a>
+      <div class="content">
+<div class="up">
+        <ul>
+<li>
+  <div class="model">
+ <p>Model</p>
+    {{samochod.model}}
+</div>
+</li>
+<li>
+  <div class="cena">
+    <p>Cena (zl)</p>
+  {{samochod.cena}}
+</div>
+</li>
+<li>
+  <div class="moc">
+    <p>Moc (KM)</p>
+  {{samochod.moc}}
+</div>
+</li>
+<li>
+  <div class="pojemnosc">
+    <p>Pojemnosc (cm3)</p>
+  {{samochod.pojemnosc}}
+</div>
+</li>
+<li>
+  <div class="przebieg">
+    <p>Przebieg (tys. km)</p>
+  {{samochod.przebieg}}
+</div>
+</li>
+</ul>
+</div>
+<div class="down">
+<ul>
+<li>
+  <div class="rok">
+    <p>Rok</p>
+  {{samochod.rok}}
+</div>
+</li>
+<li>
+  <div class="paliwo">
+    <p>Paliwo</p>
+  {{samochod.paliwo}}
+</div>
+</li>
+<li>
+  <div class="skrzynia">
+    <p>Skrzynia</p>
+  {{samochod.skrzynia}}
+</div>
+</li>
+<ul class="wynik">
+<li>
+  <div class="suma">
+    <p>Odleglosc</p>
+  {{samochod.suma | number: '1.0-3'}}
+</div>
+</li>
+<li>
+  <div class="centroid">
+    <p>Ocena</p>
+  {{samochod.centroid | number: '1.0-3'}}
+</div>
+</li>
+<li>
+  <div class="sumacentroid">
+    <p>Roznica oceny</p>
+  {{samochod.sumacentroid | number: '1.0-3'}}
+</div>
+</li>
+</ul>
+</ul>
+</div>
+</div>
+</div>
+  </li>
+</ul> -->
+
+
+  <h3>Roznica oceny</h3>
+
+
+<ul>
+  <li *ngFor="let samochod of wybraneSumaCentroid.slice(0, 4);let i = index">
+    <p>{{i + 1}}.</p>
+    <div class="samochod">
+      <a routerLink="/car/{{samochod.id}}">
+      <img [src]="samochod.link" [alt]="samochod.model"/>
+    </a>
+      <div class="content">
+<div class="up">
+        <ul>
+<li>
+  <div class="model">
+ <p>Model</p>
+    {{samochod.model}}
+</div>
+</li>
+<li>
+  <div class="cena">
+    <p>Cena (zl)</p>
+  {{samochod.cena}}
+</div>
+</li>
+<li>
+  <div class="moc">
+    <p>Moc (KM)</p>
+  {{samochod.moc}}
+</div>
+</li>
+<li>
+  <div class="pojemnosc">
+    <p>Pojemnosc (cm3)</p>
+  {{samochod.pojemnosc}}
+</div>
+</li>
+<li>
+  <div class="przebieg">
+    <p>Przebieg (tys. km)</p>
+  {{samochod.przebieg}}
+</div>
+</li>
+</ul>
+</div>
+<div class="down">
+<ul>
+<li>
+  <div class="rok">
+    <p>Rok</p>
+  {{samochod.rok}}
+</div>
+</li>
+<li>
+  <div class="paliwo">
+    <p>Paliwo</p>
+  {{samochod.paliwo}}
+</div>
+</li>
+<li>
+  <div class="skrzynia">
+    <p>Skrzynia</p>
+  {{samochod.skrzynia}}
+</div>
+</li>
+<ul class="wynik">
+  <li>
+    <!-- <div class="suma">
+      <p>Odleglosc</p>
+    {{samochod.suma | number: '1.0-3'}}
+  </div> -->
+  </li>
+  <li>
+    <div class="centroid">
+      <p>Ocena</p>
+    {{samochod.centroid | number: '1.0-3'}}
+  </div>
+  </li>
+  <li>
+    <div class="sumacentroid">
+      <p>Roznica oceny</p>
+    {{samochod.sumacentroid | number: '1.0-3'}}
+  </div>
+  </li>
+  </ul>
+</ul>
+</div>
+</div>
+</div>
+  </li>
+</ul>
+
+</div>
+

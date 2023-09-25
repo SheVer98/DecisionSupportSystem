@@ -1,0 +1,262 @@
+<app-adminheader></app-adminheader>
+<div *ngIf="showDetails4">
+  <button (click)="wybierz()">Wyswietl</button>
+</div>
+
+<div *ngIf="showDetails5">
+  <button (click)="showDetails = !showDetails">
+    {{ showDetails ? 'Ukryj' : 'Dane' }}
+  </button>
+
+  <button (click)="showDetails2 = !showDetails2">
+    {{ showDetails2 ? 'Ukryjj' : 'Szczegolowe dane' }}
+  </button>
+
+  <button (click)="onShowChart()">Wykres</button>
+  <button *ngIf="showDetails3" (click)="onHideChart()">Ukryj wykres</button>
+</div>
+
+
+<div *ngIf="showDetails3">
+  <canvas id="myChart"></canvas>
+</div>
+
+
+
+<ul *ngIf="showDetails">
+  <li *ngFor="let samochod of wybrane">
+    <div class="up">
+      <ul>
+        <!-- <li>
+          <div class="Id">
+            <p>ID</p>
+            {{samochod.id}}
+          </div>
+        </li> -->
+        <li>
+          <div class="model">
+            <p>Samochod</p>
+            {{samochod.model}}
+          </div>
+        </li>
+        <li class="centroid-item">
+          <div class="centroid">
+            <p>Ocena</p>
+            {{samochod.centroid | number: '1.0-3'}}
+          </div>
+        </li>
+        <li>
+          <div class="cena">
+            <p>Cena (zl)</p>
+            {{samochod.cena}}
+          </div>
+        </li>
+        <li>
+          <div class="moc">
+            <p>Moc (KM)</p>
+            {{samochod.moc}}
+          </div>
+        </li>
+        <li>
+          <div class="pojemnosc">
+            <p>Pojemnosc (cm3)</p>
+            {{samochod.pojemnosc}}
+          </div>
+        </li>
+        <li>
+          <div class="przebieg">
+            <p>Przebieg (tys. km)</p>
+            {{samochod.przebieg}}
+          </div>
+        </li>
+        <li>
+          <div class="rok">
+            <p>Rok</p>
+            {{samochod.rok}}
+          </div>
+        </li>
+        <li>
+          <div class="paliwo">
+            <p>Paliwo</p>
+            {{samochod.paliwo}}
+          </div>
+        </li>
+        <li>
+          <div class="skrzynia">
+            <p>Skrzynia</p>
+            {{samochod.skrzynia}}
+          </div>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul>
+
+
+
+<ul *ngIf="showDetails2">
+  <li *ngFor="let samochod of wybrane">
+    <div class="content">
+      <div class="up">
+        <ul>
+          <!-- <li>
+            <div class="id">
+              <p>Id</p>
+              {{samochod.id}}
+            </div>
+          </li> -->
+          <li>
+            <div class="model">
+              <p>Samochod</p>
+              {{samochod.model}}
+            </div>
+          </li>
+          <li class="centroid-item">
+            <div class="centroid">
+              <p>Ocena</p>
+              {{samochod.centroid | number: '1.0-3'}}
+            </div>
+          </li>
+
+          <li>
+            <div class="niskaocena">
+              <p>niskaocena</p>
+              {{samochod.niskaocena | number: '1.0-3'}}
+            </div>
+          </li>
+          <li>
+            <div class="sredniaocena">
+              <p>sredniaocena</p>
+              {{samochod.sredniaocena | number: '1.0-3'}}
+            </div>
+          </li>
+          <li>
+            <div class="wysokaocena">
+              <p>wysokaocena</p>
+              {{samochod.wysokaocena | number: '1.0-3'}}
+            </div>
+          </li>
+          <li>
+            <div class="cena">
+              <p>Cena (zl)</p>
+              {{samochod.cena}}
+            </div>
+          </li>
+          <li>
+            <div class="moc">
+              <p>Moc (KM)</p>
+              {{samochod.moc}}
+            </div>
+          </li>
+          <li>
+            <div class="pojemnosc">
+              <p>Pojemnosc (cm3)</p>
+              {{samochod.pojemnosc}}
+            </div>
+          </li>
+          <li>
+            <div class="przebieg">
+              <p>Przebieg (tys. km)</p>
+              {{samochod.przebieg}}
+            </div>
+          </li>
+          <li>
+            <div class="rok">
+              <p>Rok</p>
+              {{samochod.rok}}
+            </div>
+          </li>
+          <li>
+            <div class="paliwo">
+              <p>Paliwo</p>
+              {{samochod.paliwo}}
+            </div>
+          </li>
+          <li>
+            <div class="skrzynia">
+              <p>Skrzynia</p>
+              {{samochod.skrzynia}}
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="down">
+        <ul>
+          <li>
+            <div class="niskaCena">
+              <p>niskaCena</p>
+              {{ samochod.niskaCena | number: '1.0-3' }}
+            </div>
+          </li>
+          <li>
+            <div class="sredniaCena">
+              <p>sredniaCena</p>
+              {{samochod.sredniaCena | number: '1.0-3'}}
+            </div>
+          </li>
+          <li>
+            <div class="wysokaCena">
+              <p>wysokaCena</p>
+              {{samochod.wysokaCena | number: '1.0-3'}}
+            </div>
+          </li>
+          <li>
+            <div class="bardzowysokaCena">
+              <p>bardzowysokaCena</p>
+              {{samochod.bardzowysokaCena | number: '1.0-3'}}
+            </div>
+          </li>
+          <li>
+            <div class="slabaMoc">
+              <p>slabaMoc</p>
+              {{samochod.slabaMoc | number: '1.0-3'}}
+            </div>
+          </li>
+          <li>
+            <div class="sredniaMoc">
+              <p>sredniaMoc</p>
+              {{samochod.sredniaMoc | number: '1.0-3'}}
+            </div>
+          </li>
+          <li>
+            <div class="wysokaMoc">
+              <p>wysokaMoc</p>
+              {{samochod.wysokaMoc | number: '1.0-3'}}
+            </div>
+          </li>
+          <li>
+            <div class="malaPojemnosc">
+              <p>malaPojemnosc</p>
+              {{samochod.malaPojemnosc | number: '1.0-3'}}
+            </div>
+          </li>
+          <li>
+            <div class="duzaPojemnosc">
+              <p>duzaPojemnosc</p>
+              {{samochod.duzaPojemnosc | number: '1.0-3'}}
+            </div>
+          </li>
+          <li>
+            <div class="niskiPrzebieg">
+              <p>niskiPrzebieg</p>
+              {{samochod.niskiPrzebieg | number: '1.0-3'}}
+            </div>
+          </li>
+          <li>
+            <div class="sredniPrzebieg">
+              <p>sredniPrzebieg</p>
+              {{samochod.sredniPrzebieg | number: '1.0-3'}}
+            </div>
+          </li>
+          <li>
+            <div class="wysokiPrzebieg">
+              <p>wysokiPrzebieg</p>
+              {{samochod.wysokiPrzebieg | number: '1.0-3'}}
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </li>
+</ul>

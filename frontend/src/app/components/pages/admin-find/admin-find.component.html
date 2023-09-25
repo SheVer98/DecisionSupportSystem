@@ -1,0 +1,295 @@
+<app-adminheader></app-adminheader>
+<div class="form">
+  <h1>Wybór samochodu</h1>
+  <form (ngSubmit)="wybierz()" #myForm="ngForm">
+    <label for="cena">Cena (zl):</label>
+    <input type="number" id="cena" name="cena" min="3" max="100000" ngModel required cena><br>
+
+    <label for="moc">Moc (KM):</label>
+    <input type="number" id="moc" name="moc" min="3" max="300" ngModel required moc><br>
+
+    <label for="pojemnosc">Pojemnosc (cm3):</label>
+    <input type="number" id="pojemnosc" name="pojemnosc" min="3" max="4000" ngModel required pojemnosc><br>
+
+    <label for="przebieg">Przebieg (tys. km):</label>
+    <input type="number" id="przebieg" name="przebieg" min="3" max="400" ngModel required przebieg><br>
+
+    <label for="fuelType">Rodzaj paliwa:</label>
+    <select name="fuelType" [(ngModel)]="fuelType" (change)="wybierz()">
+      <option value="">-- Wybierz --</option>
+      <option value="Benzyna">Benzyna</option>
+      <option value="Diesel">Diesel</option>
+    </select>
+
+    <label for="gearboxType">Rodzaj skrzyni biegów:</label>
+    <select name="gearboxType" [(ngModel)]="gearboxType" (change)="wybierz()">
+      <option value="">-- Wybierz --</option>
+      <option value="Manualna">Manualna</option>
+      <option value="Automatyczna">Automatyczna</option>
+    </select>
+
+    <button (click)="showDetails = true" type="submit" value="Submit" id="btn">Szukaj</button>
+    <!-- <input type="submit" value="Submit" id="btn"> -->
+  </form>
+  <button (click)="showDetails2 = !showDetails2">
+    {{ showDetails2 ? 'Ukryj szczegóły' : 'Pokaż szczegóły' }}
+    </button>
+</div>
+
+<ul *ngIf="showDetails">
+<li>Ocena: <b>{{height | number: '1.0-3'}}</b></li>
+</ul>
+
+<div *ngIf="showDetails2">
+  <ul>
+  <h3>dla podanych danych</h3>
+  <div class="content">
+  <ul class="horizontal">
+ <li>niskacena: <b>{{niskaCena | number: '1.0-3'}}</b></li>
+ <li>sredniacena: <b>{{sredniaCena | number: '1.0-3'}}</b></li>
+ <li>wysokacena: <b>{{wysokaCena | number: '1.0-3'}}</b></li>
+ <li>bardzowysokacena: <b>{{bardzowysokaCena | number: '1.0-3'}}</b></li>
+ <li>slabaMoc: <b>{{slabaMoc | number: '1.0-3'}}</b></li>
+ <li>sredniamoc: <b>{{sredniaMoc | number: '1.0-3'}}</b></li>
+ <li>wysokamoc: <b>{{wysokaMoc | number: '1.0-3'}}</b></li>
+ <li>malapojemnosc: <b>{{malaPojemnosc | number: '1.0-3'}}</b></li>
+ <li>duzapojemnosc: <b>{{duzaPojemnosc | number: '1.0-3'}}</b></li>
+ <li>niskiprzebieg: <b>{{niskiPrzebieg | number: '1.0-3'}}</b></li>
+ <li>sredniPrzebieg: <b>{{sredniPrzebieg | number: '1.0-3'}}</b></li>
+ <li>wysokiPrzebieg: <b>{{wysokiPrzebieg | number: '1.0-3'}}</b></li>
+</ul>
+<ul class="horizontal">
+<li>niskaocena: <b>{{maxniska}}</b></li>
+<li>sredniaocena: <b>{{maxsrednia}}</b></li>
+<li>wysokaocena: <b>{{maxwysoka}}</b></li>
+</ul>
+</div>
+</ul>
+
+
+  <h3>Odleglosc</h3>
+  <ul>
+  <li *ngFor="let samochod of wybraneSuma.slice(0, 4)">
+
+<div class="content">
+
+    <ul>
+  <li>model: <b>{{samochod.model}}</b></li>
+<li>niskaocena: <b>{{samochod.niskaocena | number: '1.0-3'}}</b></li>
+<li>sredniaocena: <b>{{samochod.sredniaocena | number: '1.0-3'}}</b></li>
+<li>wysokaocena: <b>{{samochod.wysokaocena | number: '1.0-3'}}</b></li>
+<li>suma: <b>{{samochod.suma | number: '1.0-3'}}</b></li>
+<li>Ocena: <b>{{samochod.height | number: '1.0-3'}}</b></li>
+<li>Roznica: <b>{{samochod.heightdifference | number: '1.0-3'}}</b></li>
+</ul>
+</div>
+</li>
+</ul>
+
+<h3>Roznica oceny</h3>
+<ul>
+<li *ngFor="let samochod of wybraneHeightDifference.slice(0, 4)">
+
+  <div class="content">
+
+    <ul>
+  <li>model: <b>{{samochod.model}}</b></li>
+<li>niskaocena: <b>{{samochod.niskaocena | number: '1.0-3'}}</b></li>
+<li>sredniaocena: <b>{{samochod.sredniaocena | number: '1.0-3'}}</b></li>
+<li>wysokaocena: <b>{{samochod.wysokaocena | number: '1.0-3'}}</b></li>
+<li>suma: <b>{{samochod.suma | number: '1.0-3'}}</b></li>
+<li>Ocena: <b>{{samochod.height | number: '1.0-3'}}</b></li>
+<li>Roznica: <b>{{samochod.heightdifference | number: '1.0-3'}}</b></li>
+</ul>
+</div>
+</li>
+  </ul>
+  </div>
+
+  <div *ngIf="showDetails">
+
+  <!-- <h3>Odleglosc</h3>
+
+  <ul>
+  <li *ngFor="let samochod of wybraneSuma.slice(0, 4); let i = index">
+    <p>{{i + 1}}.</p>
+    <div class="samochod">
+      <a routerLink="/car/{{samochod.id}}">
+      <img [src]="samochod.link" [alt]="samochod.model"/>
+    </a>
+      <div class="content">
+<div class="up">
+        <ul>
+<li>
+  <div class="model">
+ <p>Model</p>
+    {{samochod.model}}
+</div>
+</li>
+<li>
+  <div class="cena">
+    <p>Cena (zl)</p>
+  {{samochod.cena}}
+</div>
+</li>
+<li>
+  <div class="moc">
+    <p>Moc (KM)</p>
+  {{samochod.moc}}
+</div>
+</li>
+<li>
+  <div class="pojemnosc">
+    <p>Pojemnosc (cm3)</p>
+  {{samochod.pojemnosc}}
+</div>
+</li>
+<li>
+  <div class="przebieg">
+    <p>Przebieg (tys. km)</p>
+  {{samochod.przebieg}}
+</div>
+</li>
+</ul>
+</div>
+<div class="down">
+<ul>
+<li>
+  <div class="rok">
+    <p>Rok</p>
+  {{samochod.rok}}
+</div>
+</li>
+<li>
+  <div class="paliwo">
+    <p>Paliwo</p>
+  {{samochod.paliwo}}
+</div>
+</li>
+<li>
+  <div class="skrzynia">
+    <p>Skrzynia</p>
+  {{samochod.skrzynia}}
+</div>
+</li>
+<ul class="wynik">
+  <li>
+    <div class="suma">
+      <p>Odleglosc</p>
+    {{samochod.suma | number: '1.0-3'}}
+  </div>
+  </li>
+  <li>
+    <div class="centroid">
+      <p>Ocena</p>
+    {{samochod.centroid | number: '1.0-3'}}
+  </div>
+  </li>
+  <li>
+    <div class="sumacentroid">
+      <p>Roznica oceny</p>
+    {{samochod.sumacentroid | number: '1.0-3'}}
+  </div>
+  </li>
+  </ul>
+</ul>
+</div>
+</div>
+</div>
+  </li>
+</ul> -->
+
+
+  <h3>Roznica oceny</h3>
+
+
+<ul>
+  <li *ngFor="let samochod of wybraneHeightDifference.slice(0, 4);let i = index">
+    <p>{{i + 1}}.</p>
+    <div class="samochod">
+      <a routerLink="/car/{{samochod.id}}">
+      <img [src]="samochod.link" [alt]="samochod.model"/>
+    </a>
+      <div class="content">
+<div class="up">
+        <ul>
+<li>
+  <div class="model">
+ <p>Model</p>
+    {{samochod.model}}
+</div>
+</li>
+<li>
+  <div class="cena">
+    <p>Cena (zl)</p>
+  {{samochod.cena}}
+</div>
+</li>
+<li>
+  <div class="moc">
+    <p>Moc (KM)</p>
+  {{samochod.moc}}
+</div>
+</li>
+<li>
+  <div class="pojemnosc">
+    <p>Pojemnosc (cm3)</p>
+  {{samochod.pojemnosc}}
+</div>
+</li>
+<li>
+  <div class="przebieg">
+    <p>Przebieg (tys. km)</p>
+  {{samochod.przebieg}}
+</div>
+</li>
+</ul>
+</div>
+<div class="down">
+<ul>
+<li>
+  <div class="rok">
+    <p>Rok</p>
+  {{samochod.rok}}
+</div>
+</li>
+<li>
+  <div class="paliwo">
+    <p>Paliwo</p>
+  {{samochod.paliwo}}
+</div>
+</li>
+<li>
+  <div class="skrzynia">
+    <p>Skrzynia</p>
+  {{samochod.skrzynia}}
+</div>
+</li>
+<ul class="wynik">
+  <li>
+    <!-- <div class="suma">
+      <p>Odleglosc</p>
+    {{samochod.suma | number: '1.0-3'}}
+  </div> -->
+  </li>
+  <li>
+    <div class="centroid">
+      <p>Ocena</p>
+    {{samochod.height | number: '1.0-3'}}
+  </div>
+  </li>
+  <li>
+    <div class="sumacentroid">
+      <p>Roznica oceny</p>
+    {{samochod.heightdifference | number: '1.0-3'}}
+  </div>
+  </li>
+  </ul>
+</ul>
+</div>
+</div>
+</div>
+  </li>
+</ul>
+</div>
+

@@ -1,0 +1,130 @@
+.container {
+  text-align: center;
+}
+
+select {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 10px;
+  width: 10rem;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: rgb(49, 48, 48);
+  color: white;
+}
+
+
+
+
+
+
+ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+
+}
+
+
+
+li img {
+  background-size: cover;
+  height: 30rem;
+  width: 55rem;
+
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 1rem;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+
+}
+
+li{
+  margin-right: 1.5rem;
+
+
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+
+}
+
+.samochod{
+  background-color: rgb(179, 176, 176);
+}
+
+
+.samochod .content {
+  display: flex;
+  flex-direction: column;
+}
+
+.up {
+  order: 1;
+}
+
+.down {
+  order: 2;
+}
+
+
+
+
+
+p{
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.model{
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.cena{
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.moc{
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.pojemnosc{
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.przebieg {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.rok{
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.paliwo{
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.skrzynia{
+  text-align: center;
+  margin-bottom: 1rem;
+}
+

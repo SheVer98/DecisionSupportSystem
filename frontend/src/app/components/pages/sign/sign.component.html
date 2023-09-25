@@ -1,0 +1,16 @@
+<button routerLink="/" class="main">Main</button>
+
+<div class="container">
+<h1>Logowanie Administratora</h1>
+<form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+  <div>
+    <label for="username">Nazwa użytkownika:</label>
+    <input type="text" id="username" name="username" [(ngModel)]="username" required>
+  </div>
+  <div>
+    <label for="password">Hasło:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="password" required>
+  </div>
+  <button type="submit" [disabled]="!loginForm.form.valid">Zaloguj</button>
+</form>
+</div>
